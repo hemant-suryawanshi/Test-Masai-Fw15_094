@@ -1,4 +1,5 @@
 import React from "react";
+import Task from "../Task/Task";
 import styles from "./tasks.module.css";
 
 const Tasks = ({ data }) => {
@@ -10,7 +11,7 @@ const Tasks = ({ data }) => {
       {data.length != 0 ? (
         <ul data-testid="tasks" className={styles.tasks}>
           {data.map((ele) => (
-            <li key={ele.id}>{ele.text}</li>
+            <Task ele={ele}/>
           ))}
         </ul>
       ) : (

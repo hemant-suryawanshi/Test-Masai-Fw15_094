@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import AddTask from "./AddTask/AddTask";
 
 import styles from "./taskApp.module.css";
 
@@ -39,13 +40,14 @@ const TaskApp = () => {
       count: 200,
     },
   ]);
+
   // NOTE: do not delete `data-testid` key value pair
   return (
     <div data-testid="task-app" className={styles.taskApp}>
       {/* Header */}
       <TaskHeader data={data} />
-      {/* Add Task */}
-      <Tasks data={data}/>
+      <AddTask data={data} setData={setData} />
+      <Tasks data={data} />
     </div>
   );
 };
