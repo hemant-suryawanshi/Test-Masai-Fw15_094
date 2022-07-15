@@ -2,7 +2,7 @@ import React from "react";
 import Task from "../Task/Task";
 import styles from "./tasks.module.css";
 
-const Tasks = ({ data, DeleteTask }) => {
+const Tasks = ({ data, DeleteTask ,CompleteTask}) => {
   // NOTE: do not delete `data-testid` key value pair
   // console.log(data);
 
@@ -11,7 +11,7 @@ const Tasks = ({ data, DeleteTask }) => {
       {data.length != 0 ? (
         <ul data-testid="tasks" className={styles.tasks}>
           {data.map((ele) => (
-            <Task ele={ele} DeleteTask={DeleteTask} />
+            <Task ele={ele} DeleteTask={DeleteTask} CompleteTask={CompleteTask}/>
           ))}
         </ul>
       ) : (

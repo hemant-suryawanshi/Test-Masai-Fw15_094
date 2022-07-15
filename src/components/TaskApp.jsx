@@ -49,13 +49,25 @@ const TaskApp = () => {
     );
   };
 
+  const CompleteTask = (id) => {
+    // console.log(id);
+    setData(data.map((ele) => {
+      if (ele.id === id) {
+        const short = { ...ele };
+        short.done = !short.done;
+        return short;
+      }
+      return ele;
+    }));
+  }
+
   // NOTE: do not delete `data-testid` key value pair
   return (
     <div data-testid="task-app" className={styles.taskApp}>
       {/* Header */}
       <TaskHeader data={data} />
       <AddTask data={data} setData={setData} />
-      <Tasks data={data} DeleteTask={DeleteTask} />
+      <Tasks data={data} DeleteTask={DeleteTask} CompleteTask={CompleteTask}/>
     </div>
   );
 };

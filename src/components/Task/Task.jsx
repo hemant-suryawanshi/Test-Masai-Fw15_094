@@ -3,7 +3,7 @@ import { useState } from "react";
 import Counter from "../Counter/Counter";
 import styles from "./task.module.css";
 
-const Task = ({ ele, DeleteTask }) => {
+const Task = ({ ele, DeleteTask, CompleteTask }) => {
   // NOTE: do not delete `data-testid` key value pair
   const [count, setCount] = useState(ele.count);
 
@@ -12,7 +12,12 @@ const Task = ({ ele, DeleteTask }) => {
   };
   return (
     <li data-testid="task" className={styles.task} style={{ display: "flex" }}>
-      <input type="checkbox" data-testid="task-checkbox" />
+      {ele.done==true ? (
+        <input type="checkbox" data-testid="task-checkbox" onClick={()=>CompleteTask(ele.id)} checked/>
+      ) : (
+        <input type="checkbox" data-testid="task-checkbox" onClick={()=>CompleteTask(ele.id)} />
+      )}
+    
       <div data-testid="task-text">{ele.text}</div>
       <Counter count={count} HandelCount={HandelCount} />
       <button
