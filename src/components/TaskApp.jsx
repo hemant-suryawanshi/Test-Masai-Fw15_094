@@ -41,13 +41,21 @@ const TaskApp = () => {
     },
   ]);
 
+  const DeleteTask = (id) => {
+    setData(
+      data.filter((ele) => {
+        return ele.id !== id;
+      })
+    );
+  };
+
   // NOTE: do not delete `data-testid` key value pair
   return (
     <div data-testid="task-app" className={styles.taskApp}>
       {/* Header */}
       <TaskHeader data={data} />
       <AddTask data={data} setData={setData} />
-      <Tasks data={data} />
+      <Tasks data={data} DeleteTask={DeleteTask} />
     </div>
   );
 };
