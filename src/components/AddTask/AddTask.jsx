@@ -15,8 +15,29 @@ const AddTask = ({ data, setData }) => {
     if (newAdd.text == "") {
       return;
     }
+    let check = false;
+    data.forEach((elem) => {
+      if (newAdd.text === elem.text) {
+        check = true;
+        return;
+      }
+    })
+    if (check) {
+      return;
+    }
+    
+
     const updatedlist = [...data];
     updatedlist.push(newAdd);
+    setData(updatedlist)
+  }
+
+  const handelChange=(e)=>{
+    setNewAdd({
+      ...newAdd,
+      id: data.length + 1,
+      text: e.target.value
+    });
   }
 
   return (
@@ -25,7 +46,7 @@ const AddTask = ({ data, setData }) => {
         data-testid="add-task-input"
         type="text"
         value={newAdd.text}
-        onChange={(e) => setNewAdd(newAdd.text + e.target.value)}
+        onChange={(e)=>handelChange(e)}
       />
       <button data-testid="add-task-button" onClick={handelSubmitnewAdd}>
         Add
