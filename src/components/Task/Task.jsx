@@ -13,7 +13,7 @@ const Task = ({ ele, DeleteTask, CompleteTask }) => {
   return (
     <li data-testid="task" className={styles.task} style={{ display: "flex" }}>
       {ele.done==true ? (
-        <input type="checkbox" data-testid="task-checkbox" onClick={()=>CompleteTask(ele.id)} checked/>
+        <input type="checkbox" data-testid="task-checkbox" onClick={()=>CompleteTask(ele.id)}  defaultChecked="true"/>
       ) : (
         <input type="checkbox" data-testid="task-checkbox" onClick={()=>CompleteTask(ele.id)} />
       )}
